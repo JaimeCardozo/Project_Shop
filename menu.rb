@@ -6,6 +6,7 @@ def add_item(items)
     items = items.push(item)
     return items
 end
+
 def view_items(items)
     if items == []
         puts "The are no items"
@@ -16,6 +17,7 @@ def view_items(items)
     end
     
 end
+
 def remove_item(items)
     puts "Digit the item position that wish mark"
     item_position = gets.chomp.to_i-1
@@ -34,6 +36,7 @@ def remove_item(items)
     end 
     return items
 end
+
 def mark_item(items)
     puts "Digit position of item"
     item_position = gets.chomp.to_i - 1 
@@ -46,17 +49,31 @@ def mark_item(items)
     end
     return items
 end
+
+def delete_all(items)
+    puts "Are sure delete all? y/n"
+    asquest = gets.chomp
+    asquest = asquest.upcase
+    if asquest == "Y" || asquest == "YES"
+        items = []
+    else
+        puts "Okey! Your items exist"
+    end
+    return items
+end
+
 def menu(items)
     loop do
         puts "
+          Menu
           a - Add item
           r - Remove item
           v - View item
           M - Mark item
           E - Erased all
           C- Close"
-    opt = gets.chomp
-    opt = opt.upcase
+        opt = gets.chomp
+        opt = opt.upcase
         case opt
         when "A"
             "Add item"
@@ -65,17 +82,17 @@ def menu(items)
         when "R"
             "Remove item"
             remove_item(items)
-            view_items
+            view_items(items)
         when "V"
             "view item"
             view_items(items)
         when "M"
             "Mark item"
             items = mark_item(items)
-            view_items()
+            view_items(items)
         when "E"
             "Erased all"
-            
+            items = delete_all(items)
         when "C"
             "Close"
             puts "Thanks for using me"
