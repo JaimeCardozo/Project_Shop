@@ -1,0 +1,1 @@
+item = Item.new("casa",2)
